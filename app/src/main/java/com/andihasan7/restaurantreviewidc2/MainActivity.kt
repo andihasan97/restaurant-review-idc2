@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun findRestaurant() {
         showLoading(true)
         val client = ApiConfig.getApiService().getRestaurant(RESTAURANT_ID)
-        client.enqueue(object : retrofit2.Callback<RestaurantResponse> {
+        client.enqueue(object : Callback<RestaurantResponse> {
             override fun onResponse(
                 call: Call<RestaurantResponse>,
                 response: Response<RestaurantResponse>
