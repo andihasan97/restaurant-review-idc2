@@ -50,11 +50,13 @@ class MainActivity : AppCompatActivity() {
 
         // mengobserve variable snackbarText dan menampilkan dgn Snackbar
         mainViewModel.snackbarText.observe(this, {
-            Snackbar.make(
-                window.decorView.rootView,
-                it,
-                Snackbar.LENGTH_SHORT
-            ).show()
+            it.getContentIfNotHandled()?.let { snackBarText ->
+                Snackbar.make(
+                    window.decorView.rootView,
+                    snackBarText,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         })
     }
 
